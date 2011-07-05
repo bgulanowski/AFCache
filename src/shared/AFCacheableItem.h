@@ -42,7 +42,7 @@ enum kCacheStatus {
 	kCacheStatusDownloading = 7, // item is not fully downloaded
 };
 
-@interface AFCacheableItem : NSObject {
+@interface AFCacheableItem : NSObject<NSURLConnectionDelegate> {
 	NSURL *url;
 	NSData *data;
 	AFCache *cache;

@@ -234,7 +234,7 @@
 		
 		// if either "Pragma: no-cache" is set in the header, or max-age=0 is set then
 		// this resource must not be cached.
-		mustNotCache = pragmaNoCacheSet || maxAgeIsSet && maxAgeIsZero;
+		mustNotCache = pragmaNoCacheSet || (maxAgeIsSet && maxAgeIsZero);
 		if (mustNotCache) self.validUntil = nil;
 	}
 }
@@ -312,6 +312,13 @@
 	return (self.username && self.password);
 }
 
+
+- (void)connection:(NSURLConnection *)connection didCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
+{
+	NSError *err = [NSError errorWithDomain: @"HTTP Authentifcation failed" code: 99 userInfo: nil];
+	[self connection:connection didFailWithError:err];
+}
+
 /*
  *      The connection is called when we get a basic http authentification
  *  If so, login with the given username and passwort
@@ -335,13 +342,6 @@
 		
 	}
 }
-
-- (void)connection:(NSURLConnection *)connection didCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
-{
-	NSError *err = [NSError errorWithDomain: @"HTTP Authentifcation failed" code: 99 userInfo: nil];
-	[self connection:connection didFailWithError:err];
-}
-
 
 
 /*

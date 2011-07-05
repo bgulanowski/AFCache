@@ -15,7 +15,6 @@
 		0566AE021332D6B500583E6A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 051B387B1328AACA0057F2F5 /* UIKit.framework */; };
 		0566AE031332D6B500583E6A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 051B38701328AACA0057F2F5 /* Foundation.framework */; };
 		0566AE041332D6B500583E6A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 051B387E1328AACA0057F2F5 /* CoreGraphics.framework */; };
-		0566AE301332D6FD00583E6A /* Demo-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0566AE261332D6FD00583E6A /* Demo-Info.plist */; };
 		0566AE311332D6FD00583E6A /* DemoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0566AE281332D6FD00583E6A /* DemoAppDelegate.m */; };
 		0566AE321332D6FD00583E6A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0566AE291332D6FD00583E6A /* main.m */; };
 		0566AE331332D6FD00583E6A /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0566AE2A1332D6FD00583E6A /* MainWindow.xib */; };
@@ -84,6 +83,8 @@
 		0569DECA1328AD9C00B3D016 /* DateParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 0569DE921328AD9C00B3D016 /* DateParser.h */; };
 		0569DECB1328AD9C00B3D016 /* DateParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0569DE931328AD9C00B3D016 /* DateParser.m */; };
 		0569DECC1328AD9C00B3D016 /* DateParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0569DE931328AD9C00B3D016 /* DateParser.m */; };
+		4EAD388713C37C7900173226 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0566AE571332DA2500583E6A /* libz.dylib */; };
+		4EAD388813C37C8100173226 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0566AE3A1332D7E300583E6A /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -189,6 +190,8 @@
 				051B387D1328AACA0057F2F5 /* Foundation.framework in Frameworks */,
 				051B387F1328AACA0057F2F5 /* CoreGraphics.framework in Frameworks */,
 				051B38821328AACA0057F2F5 /* libAFCache-iOS.a in Frameworks */,
+				4EAD388713C37C7900173226 /* libz.dylib in Frameworks */,
+				4EAD388813C37C8100173226 /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,14 +214,12 @@
 		051B38621328AACA0057F2F5 = {
 			isa = PBXGroup;
 			children = (
-				0566AE571332DA2500583E6A /* libz.dylib */,
-				0566AE3A1332D7E300583E6A /* SystemConfiguration.framework */,
-				051B386D1328AACA0057F2F5 /* libAFCache-iOS.a */,
 				0569DE641328AD9C00B3D016 /* src */,
 				0569DE571328AD5B00B3D016 /* test */,
 				0566AE051332D6B500583E6A /* AFCacheDemo */,
 				051B386F1328AACA0057F2F5 /* Frameworks */,
 				051B386E1328AACA0057F2F5 /* Products */,
+				051B386D1328AACA0057F2F5 /* libAFCache-iOS.a */,
 			);
 			sourceTree = "<group>";
 		};
@@ -234,9 +235,11 @@
 		051B386F1328AACA0057F2F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0566AE571332DA2500583E6A /* libz.dylib */,
 				051B38701328AACA0057F2F5 /* Foundation.framework */,
 				051B387B1328AACA0057F2F5 /* UIKit.framework */,
 				051B387E1328AACA0057F2F5 /* CoreGraphics.framework */,
+				0566AE3A1332D7E300583E6A /* SystemConfiguration.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -485,6 +488,7 @@
 		051B38641328AACA0057F2F5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastUpgradeCheck = 0420;
 				ORGANIZATIONNAME = "Artifacts - Fine Software Development";
 			};
 			buildConfigurationList = 051B38671328AACA0057F2F5 /* Build configuration list for PBXProject "AFCache-iOS" */;
@@ -520,7 +524,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0566AE301332D6FD00583E6A /* Demo-Info.plist in Resources */,
 				0566AE331332D6FD00583E6A /* MainWindow.xib in Resources */,
 				0566AE341332D6FD00583E6A /* NSURLRequest.xib in Resources */,
 				0566AE351332D6FD00583E6A /* Packaging.xib in Resources */,
@@ -643,6 +646,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
@@ -656,6 +660,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
@@ -801,6 +806,7 @@
 				0566AE211332D6B500583E6A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
