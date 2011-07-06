@@ -178,13 +178,17 @@ static NSString *STORE_ARCHIVE_FILENAME = @ "urlcachestore";
 	downloadQueue = [[NSMutableArray alloc] init];
 	
 	
+    BOOL isDirectory = NO;
 	NSError *error = nil;
 	/* check for existence of cache directory */
-	if ([[NSFileManager defaultManager] fileExistsAtPath: dataPath]) {
+	if ([[NSFileManager defaultManager] fileExistsAtPath: dataPath isDirectory:&isDirectory] && isDirectory) {
 		AFLog(@ "Successfully unarchived cache store");
 	}
 	else {
-		if (![[NSFileManager defaultManager] createDirectoryAtPath: dataPath
+        if(!isDirectory && ![[NSFileManager defaultManager] removeItemAtPath:dataPath error:&error])
+            AFLog(@"Cannot create data path for AFCache; file in the way. error:'%@'.", error);
+        
+		else if (![[NSFileManager defaultManager] createDirectoryAtPath: dataPath
 									   withIntermediateDirectories: YES
 														attributes: nil
 															 error: &error]) {
@@ -593,6 +597,8 @@ static NSString *STORE_ARCHIVE_FILENAME = @ "urlcachestore";
 }
 
 - (NSString *)filenameForURL: (NSURL *) url {
+    if([@"/" isEqualToString:[url path]])
+        return [NSString stringWithFormat:@"%@_index", [url host]];
 	return [self filenameForURLString:[url absoluteString]];
 }
 
