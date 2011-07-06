@@ -1117,7 +1117,7 @@ static NSString *STORE_ARCHIVE_FILENAME = @ "urlcachestore";
 	@synchronized(self) {
 		if (sharedAFCacheInstance == nil) {
 			sharedAFCacheInstance = [[self alloc] init];
-			sharedAFCacheInstance.diskCacheDisplacementTresholdSize = kDefaultDiskCacheDisplacementThresholdSize;
+			sharedAFCacheInstance.diskCacheDisplacementThresholdSize = kDefaultDiskCacheDisplacementThresholdSize;
 			sharedAFCacheInstance.downloadPermission = YES;
 		}
 	}
