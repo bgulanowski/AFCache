@@ -58,7 +58,7 @@ extern NSString* const UIApplicationWillResignActiveNotification;
 static AFCache *sharedAFCacheInstance = nil;
 static NSString *STORE_ARCHIVE_FILENAME = @ "urlcachestore";
 
-@synthesize cacheEnabled, dataPath, cacheInfoStore, pendingConnections, downloadQueue, maxItemFileSize, diskCacheDisplacementTresholdSize, suffixToMimeTypeMap, networkTimeoutIntervals;
+@synthesize cacheEnabled, dataPath, cacheInfoStore, pendingConnections, downloadQueue, maxItemFileSize, diskCacheDisplacementThresholdSize, suffixToMimeTypeMap, networkTimeoutIntervals;
 @synthesize clientItems;
 @synthesize concurrentConnections;
 
@@ -203,7 +203,7 @@ static NSString *STORE_ARCHIVE_FILENAME = @ "urlcachestore";
 // TODO: exchange with a better displacement strategy
 - (void)doHousekeeping {
 	unsigned long size = [self diskCacheSize];
-	if (size < diskCacheDisplacementTresholdSize) return;
+	if (size < diskCacheDisplacementThresholdSize) return;
 	NSDate *now = [NSDate date];
 	NSArray *keys = nil;
 	NSString *key = nil;
@@ -1117,7 +1117,7 @@ static NSString *STORE_ARCHIVE_FILENAME = @ "urlcachestore";
 	@synchronized(self) {
 		if (sharedAFCacheInstance == nil) {
 			sharedAFCacheInstance = [[self alloc] init];
-			sharedAFCacheInstance.diskCacheDisplacementTresholdSize = kDefaultDiskCacheDisplacementTresholdSize;
+			sharedAFCacheInstance.diskCacheDisplacementTresholdSize = kDefaultDiskCacheDisplacementThresholdSize;
 			sharedAFCacheInstance.downloadPermission = YES;
 		}
 	}
