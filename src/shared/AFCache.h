@@ -45,7 +45,7 @@
 //do housekeeping every nth time archive is called (per session)
 #define kHousekeepingInterval 10
 
-#define kDefaultDiskCacheDisplacementTresholdSize 100000000
+#define kDefaultDiskCacheDisplacementThresholdSize 100000000
 
 #define kDefaultNetworkTimeoutIntervalIMSRequest 45
 #define kDefaultNetworkTimeoutIntervalGETRequest 100
@@ -89,7 +89,7 @@ typedef struct NetworkTimeoutIntervals {
 	int requestCounter;
 	int concurrentConnections;
 	double maxItemFileSize;
-	double diskCacheDisplacementTresholdSize;
+	double diskCacheDisplacementThresholdSize;
 	NSDictionary *suffixToMimeTypeMap;
     NSTimer* archiveTimer;
 	
@@ -112,7 +112,7 @@ typedef struct NetworkTimeoutIntervals {
 @property (nonatomic, retain) NSDictionary *suffixToMimeTypeMap;
 @property (nonatomic, retain) NSDictionary *clientItems;
 @property (nonatomic, assign) double maxItemFileSize;
-@property (nonatomic, assign) double diskCacheDisplacementTresholdSize;
+@property (nonatomic, assign) double diskCacheDisplacementThresholdSize;
 @property (nonatomic, assign) int concurrentConnections;
 @property BOOL downloadPermission;
 @property (nonatomic, assign) NetworkTimeoutIntervals networkTimeoutIntervals;

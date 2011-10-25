@@ -57,7 +57,7 @@ extern NSString* const UIApplicationWillResignActiveNotification;
 
 static AFCache *sharedAFCacheInstance = nil;
 
-@synthesize cacheEnabled, dataPath, cacheInfoStore, pendingConnections, downloadQueue, maxItemFileSize, diskCacheDisplacementTresholdSize, suffixToMimeTypeMap, networkTimeoutIntervals;
+@synthesize cacheEnabled, dataPath, cacheInfoStore, pendingConnections, downloadQueue, maxItemFileSize, diskCacheDisplacementThresholdSize, suffixToMimeTypeMap, networkTimeoutIntervals;
 @synthesize clientItems;
 @synthesize concurrentConnections;
 
@@ -178,13 +178,17 @@ static AFCache *sharedAFCacheInstance = nil;
 	downloadQueue = [[NSMutableArray alloc] init];
 	
 	
+    BOOL isDirectory = NO;
 	NSError *error = nil;
 	/* check for existence of cache directory */
-	if ([[NSFileManager defaultManager] fileExistsAtPath: dataPath]) {
+	if ([[NSFileManager defaultManager] fileExistsAtPath: dataPath isDirectory:&isDirectory] && isDirectory) {
 		AFLog(@ "Successfully unarchived cache store");
 	}
 	else {
-		if (![[NSFileManager defaultManager] createDirectoryAtPath: dataPath
+        if(!isDirectory && ![[NSFileManager defaultManager] removeItemAtPath:dataPath error:&error])
+            AFLog(@"Cannot create data path for AFCache; file in the way. error:'%@'.", error);
+        
+		else if (![[NSFileManager defaultManager] createDirectoryAtPath: dataPath
 									   withIntermediateDirectories: YES
 														attributes: nil
 															 error: &error]) {
@@ -203,7 +207,7 @@ static AFCache *sharedAFCacheInstance = nil;
 // TODO: exchange with a better displacement strategy
 - (void)doHousekeeping {
 	unsigned long size = [self diskCacheSize];
-	if (size < diskCacheDisplacementTresholdSize) return;
+	if (size < diskCacheDisplacementThresholdSize) return;
 	NSDate *now = [NSDate date];
 	NSArray *keys = nil;
 	NSString *key = nil;
@@ -593,7 +597,12 @@ static AFCache *sharedAFCacheInstance = nil;
 }
 
 - (NSString *)filenameForURL: (NSURL *) url {
-	return [self filenameForURLString:[url absoluteString]];
+    
+    NSString *urlString = [url absoluteString];
+    
+    if([urlString characterAtIndex:[urlString length]-1])
+        urlString = [urlString stringByAppendingPathComponent:@"_index_"];
+	return [self filenameForURLString:urlString];
 }
 
 - (NSString *)filenameForURLString: (NSString *) URLString {
@@ -602,7 +611,7 @@ static AFCache *sharedAFCacheInstance = nil;
 #endif
 	if ([URLString hasPrefix:@"data:"]) return nil;
 	NSString *filepath = [URLString stringByRegex:@".*://" substitution:@""];
-	NSString *filepath1 = [filepath stringByRegex:@":[0-9]?*/" substitution:@""];
+	NSString *filepath1 = [filepath stringByRegex:@":" substitution:@"_"];
 	NSString *filepath2 = [filepath1 stringByRegex:@"#.*" substitution:@""];
 	NSString *filepath3 = [filepath2 stringByRegex:@"\?.*" substitution:@""];	
 	NSString *filepath4 = [filepath3 stringByRegex:@"//*" substitution:@"/"];	
@@ -1119,7 +1128,7 @@ static AFCache *sharedAFCacheInstance = nil;
 	@synchronized(self) {
 		if (sharedAFCacheInstance == nil) {
 			sharedAFCacheInstance = [[self alloc] init];
-			sharedAFCacheInstance.diskCacheDisplacementTresholdSize = kDefaultDiskCacheDisplacementTresholdSize;
+			sharedAFCacheInstance.diskCacheDisplacementThresholdSize = kDefaultDiskCacheDisplacementThresholdSize;
 			sharedAFCacheInstance.downloadPermission = YES;
 		}
 	}

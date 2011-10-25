@@ -221,6 +221,7 @@
 				0566AE051332D6B500583E6A /* AFCacheDemo */,
 				051B386F1328AACA0057F2F5 /* Frameworks */,
 				051B386E1328AACA0057F2F5 /* Products */,
+				051B386D1328AACA0057F2F5 /* libAFCache-iOS.a */,
 			);
 			sourceTree = "<group>";
 		};
@@ -674,6 +675,10 @@
 		051B38911328AACA0057F2F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					armv6,
+					armv7,
+				);
 				DSTROOT = /tmp/AFCache_iOS.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "src/iOS/AFCache-iOS-Prefix.pch";
@@ -685,6 +690,10 @@
 		051B38921328AACA0057F2F5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					armv6,
+					armv7,
+				);
 				DSTROOT = /tmp/AFCache_iOS.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "src/iOS/AFCache-iOS-Prefix.pch";
