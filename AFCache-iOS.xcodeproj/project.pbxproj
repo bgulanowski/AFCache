@@ -22,7 +22,6 @@
 		0566AE351332D6FD00583E6A /* Packaging.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0566AE2C1332D6FD00583E6A /* Packaging.xib */; };
 		0566AE361332D6FD00583E6A /* PackagingDemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0566AE2E1332D6FD00583E6A /* PackagingDemoController.m */; };
 		0566AE391332D7A900583E6A /* libAFCache-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 051B386D1328AACA0057F2F5 /* libAFCache-iOS.a */; };
-		0566AE3B1332D7E300583E6A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0566AE3A1332D7E300583E6A /* SystemConfiguration.framework */; };
 		0566AE411332D85600583E6A /* CacheableItemDemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0566AE3D1332D85600583E6A /* CacheableItemDemoController.m */; };
 		0566AE421332D85600583E6A /* CacheableItemDemoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0566AE3E1332D85600583E6A /* CacheableItemDemoController.xib */; };
 		0566AE431332D85600583E6A /* NSURLRequestDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0566AE401332D85600583E6A /* NSURLRequestDemoViewController.m */; };
@@ -120,7 +119,6 @@
 		0566AE2C1332D6FD00583E6A /* Packaging.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Packaging.xib; path = src/Examples/Packaging.xib; sourceTree = SOURCE_ROOT; };
 		0566AE2D1332D6FD00583E6A /* PackagingDemoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PackagingDemoController.h; path = src/Examples/PackagingDemoController.h; sourceTree = SOURCE_ROOT; };
 		0566AE2E1332D6FD00583E6A /* PackagingDemoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PackagingDemoController.m; path = src/Examples/PackagingDemoController.m; sourceTree = SOURCE_ROOT; };
-		0566AE3A1332D7E300583E6A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0566AE3C1332D85600583E6A /* CacheableItemDemoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CacheableItemDemoController.h; path = src/Examples/CacheableItemDemoController.h; sourceTree = SOURCE_ROOT; };
 		0566AE3D1332D85600583E6A /* CacheableItemDemoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CacheableItemDemoController.m; path = src/Examples/CacheableItemDemoController.m; sourceTree = SOURCE_ROOT; };
 		0566AE3E1332D85600583E6A /* CacheableItemDemoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CacheableItemDemoController.xib; path = src/Examples/CacheableItemDemoController.xib; sourceTree = SOURCE_ROOT; };
@@ -200,7 +198,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0566AE581332DA2500583E6A /* libz.dylib in Frameworks */,
-				0566AE3B1332D7E300583E6A /* SystemConfiguration.framework in Frameworks */,
 				0566AE391332D7A900583E6A /* libAFCache-iOS.a in Frameworks */,
 				0566AE021332D6B500583E6A /* UIKit.framework in Frameworks */,
 				0566AE031332D6B500583E6A /* Foundation.framework in Frameworks */,
@@ -214,13 +211,12 @@
 		051B38621328AACA0057F2F5 = {
 			isa = PBXGroup;
 			children = (
-				0566AE3A1332D7E300583E6A /* SystemConfiguration.framework */,
-				051B386D1328AACA0057F2F5 /* libAFCache-iOS.a */,
 				0569DE641328AD9C00B3D016 /* src */,
 				0569DE571328AD5B00B3D016 /* test */,
 				0566AE051332D6B500583E6A /* AFCacheDemo */,
 				051B386F1328AACA0057F2F5 /* Frameworks */,
 				051B386E1328AACA0057F2F5 /* Products */,
+				051B386D1328AACA0057F2F5 /* libAFCache-iOS.a */,
 				051B386D1328AACA0057F2F5 /* libAFCache-iOS.a */,
 			);
 			sourceTree = "<group>";
